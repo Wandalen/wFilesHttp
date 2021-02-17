@@ -95,7 +95,7 @@ rules :
     - outerIIFEBody : 0
       MemberExpression : 0
       SwitchCase : 1
-      ignoredNodes : [ "IfStatement > IfStatement.consequent", "IfStatement > IfStatement.alternate", "IfStatement.body", "WhileStatement.body", "ForStatement.body", "ForInStatement.body", "ForOfStatement.body" ]
+      ignoredNodes : [ "IfStatement > IfStatement.consequent", "IfStatement > IfStatement.alternate", "IfStatement.body", "WhileStatement.body", "ForStatement.body", "ForInStatement.body", "ForOfStatement.body", "IfStatement ForInStatement.body" ]
   indent-legacy : off
   init-declarations : off
   key-spacing :
@@ -192,7 +192,7 @@ rules :
   no-mixed-requires : error
   no-multi-assign : off
   no-multi-spaces :
-    - warn
+    - error
     -
       ignoreEOLComments : true
       exceptions :
