@@ -2,37 +2,37 @@ format: outwillfile-2.0
 root:
   - wFilesHttp.out
 consistency:
-  wFilesHttp.out.will.yml: &ref_0
-    hash: fdd25dcbb622107f80f2d74dd22d6c2c
-    size: 37280
-  ../.ex.will.yml: &ref_1
-    hash: e31c81bd9e7b90eea9caf917db1db4bd
-    size: 1672
-  ../.im.will.yml: &ref_2
-    hash: 1ca6e74af8d36c8e90f1b2941a19a523
-    size: 4683
+  ../will.yml: &ref_0
+    hash: 1cc5d99d8caa3bc4b637a790db93dc04
+    size: 6564
 module:
   wFilesHttp.out:
     about:
       name: wFilesHttp
       org: noorg
-      description: ___
+      description: Implements file provider to access files over HTTP.
       enabled: 1
       version: 0.3.0
-      interpreters:
-        - njs >= 8.0.0
+      interpreters: &ref_1
+        - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords:
-        - tools
+      keywords: &ref_2
         - wTools
+        - wFiles
+        - file
+        - standardized abstract interface
+        - http
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
+      contributors: &ref_3
         - Kostiantyn Wandalen <wanalen@01.school>
+        - Volodymyr M. <volodymyr.migdal@gmail.com>
+        - Ihor O. <iostashvxi@gmail.com>
+        - Dmytro Kryvoruchko <dm.vict.kr@gmail.com>
       npm.name: wfileshttp
-      npm.scripts:
-        test: wtest .run proto/**
+      npm.scripts: &ref_4
+        test: 'wtest .run "proto/**" rapidity:-3'
         docgen: wdocgen .build proto
     path:
       module.willfiles:
@@ -46,15 +46,11 @@ module:
       module.original.willfiles:
         criterion:
           predefined: 1
-        path:
-          - ../.ex.will.yml
-          - ../.im.will.yml
+        path: ../will.yml
       module.peer.willfiles:
         criterion:
           predefined: 1
-        path:
-          - ../.ex.will.yml
-          - ../.im.will.yml
+        path: ../will.yml
       module.peer.in:
         criterion:
           predefined: 1
@@ -110,7 +106,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: ../proto/wtools/___
+        path: ../proto/wtools/amid/l4_files/entry/Http.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -120,13 +116,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/wtools/___'
+        path: '{path::out.*=1}/source/wtools/amid/l4_files/entry/Http.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/wtools/___'
+        path: '{path::out.*=1}/source/wtools/amid/l4_files/entry/Http.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
@@ -143,6 +139,7 @@ module:
         path:
           - ../proto/node_modules/Tools
           - ../proto/node_modules/wfileshttp
+          - ../proto/wtools/amid/l4_files/entry/Http.s
       exported.dir.proto.export:
         criterion:
           generated: 1
@@ -161,12 +158,20 @@ module:
           - ../proto/node_modules/Tools
           - ../proto/node_modules/wfileshttp
           - ../proto/wtools
-          - ../proto/wtools/abase
           - ../proto/wtools/amid
-          - ../proto/wtools/atop
+          - ../proto/wtools/amid/l4_files
+          - ../proto/wtools/amid/l4_files/entry
+          - ../proto/wtools/amid/l4_files/entry/Http.s
+          - ../proto/wtools/amid/l4_files/include
+          - ../proto/wtools/amid/l4_files/include/Http.s
+          - ../proto/wtools/amid/l4_files/l7_provider
+          - ../proto/wtools/amid/l4_files/l7_provider/Http.js
+          - ../proto/wtools/amid/l4_files/l7_provider/Http.ss
+          - ../proto/wtools/amid/l4_files.test
+          - ../proto/wtools/amid/l4_files.test/Http.test.ss
     submodule:
-      wTools:
-        path: 'npm:///wTools'
+      wfilesbasic:
+        path: 'npm:///wfilesbasic'
         autoExporting: 0
         enabled: 0
       eslint:
@@ -174,7 +179,13 @@ module:
         autoExporting: 0
         enabled: 0
         criterion:
-          debug: 1
+          development: 1
+      wTesting:
+        path: 'npm:///wTesting'
+        autoExporting: 0
+        enabled: 0
+        criterion:
+          development: 1
     reflector:
       reflect.proto.debug.raw:
         src:
@@ -314,7 +325,7 @@ module:
           prefixPath: ../proto
         mandatory: 1
         dstRewritingOnlyPreserving: 1
-        linking: hardLinkMaybe
+        linkingAction: hardLinkMaybe
         criterion:
           generated: 1
           content: proto
@@ -682,24 +693,6 @@ module:
           content: prime
         inherit:
           - files.transpile
-      exported.proto.export:
-        opts:
-          filePath: 'reflector::exported.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
-      exported.files.proto.export:
-        opts:
-          filePath: 'reflector::exported.files.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
     build:
       proto.export:
         steps:
@@ -788,44 +781,30 @@ module:
           content: proto
           export: 1
     consistency:
-      wFilesHttp.out.will.yml: *ref_0
-      ../.ex.will.yml: *ref_1
-      ../.im.will.yml: *ref_2
+      ../will.yml: *ref_0
   ../:
     about:
       name: wFilesHttp
       org: noorg
-      description: ___
+      description: Implements file provider to access files over HTTP.
       enabled: 1
       version: 0.3.0
-      interpreters:
-        - njs >= 8.0.0
-        - chrome >= 60.0.0
-        - firefox >= 60.0.0
-      keywords:
-        - tools
-        - wTools
+      interpreters: *ref_1
+      keywords: *ref_2
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
-        - Kostiantyn Wandalen <wanalen@01.school>
+      contributors: *ref_3
       npm.name: wfileshttp
-      npm.scripts:
-        test: wtest .run proto/**
-        docgen: wdocgen .build proto
+      npm.scripts: *ref_4
     path:
       module.willfiles:
         criterion:
           predefined: 1
-        path:
-          - .ex.will.yml
-          - .im.will.yml
+        path: will.yml
       module.original.willfiles:
         criterion:
           predefined: 1
-        path:
-          - .ex.will.yml
-          - .im.will.yml
+        path: will.yml
       module.peer.willfiles:
         criterion:
           predefined: 1
@@ -889,7 +868,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: proto/wtools/___
+        path: proto/wtools/amid/l4_files/entry/Http.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -899,13 +878,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/wtools/___'
+        path: '{path::out.*=1}/source/wtools/amid/l4_files/entry/Http.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/wtools/___'
+        path: '{path::out.*=1}/source/wtools/amid/l4_files/entry/Http.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
@@ -922,9 +901,10 @@ module:
         path:
           - proto/node_modules/Tools
           - proto/node_modules/wfileshttp
+          - proto/wtools/amid/l4_files/entry/Http.s
     submodule:
-      wTools:
-        path: 'npm:///wTools'
+      wfilesbasic:
+        path: 'npm:///wfilesbasic'
         autoExporting: 0
         enabled: 0
       eslint:
@@ -932,7 +912,13 @@ module:
         autoExporting: 0
         enabled: 0
         criterion:
-          debug: 1
+          development: 1
+      wTesting:
+        path: 'npm:///wTesting'
+        autoExporting: 0
+        enabled: 0
+        criterion:
+          development: 1
     reflector:
       reflect.proto.debug.raw:
         src:
@@ -1464,10 +1450,6 @@ module:
           - 'build::release'
           - 'build::npm'
     consistency:
-      ../.ex.will.yml:
-        hash: e31c81bd9e7b90eea9caf917db1db4bd
-        size: 1672
-      ../.im.will.yml:
-        hash: 1ca6e74af8d36c8e90f1b2941a19a523
-        size: 4683
-      wFilesHttp.out.will.yml: *ref_0
+      ../will.yml:
+        hash: 1cc5d99d8caa3bc4b637a790db93dc04
+        size: 6564
