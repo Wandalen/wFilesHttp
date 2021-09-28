@@ -1,6 +1,6 @@
 {
   "name": "wfileshttp",
-  "version": "0.2.88",
+  "version": "0.2.89",
   "description": "Implements file provider to access files over HTTP.",
   "author": "Kostiantyn Wandalen <wanalen@01.school>",
   "contributors": [
