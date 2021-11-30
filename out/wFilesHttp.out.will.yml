@@ -24,9 +24,9 @@ module:
         - standardized abstract interface
         - http
       license: MIT
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       contributors: &ref_3
-        - Kostiantyn Wandalen <wanalen@01.school>
+        - Kostiantyn Wandalen <wandalen@obox.systems>
         - Volodymyr M. <volodymyr.migdal@gmail.com>
         - Ihor O. <iostashvxi@gmail.com>
         - Dmytro Kryvoruchko <dm.vict.kr@gmail.com>
@@ -783,7 +783,7 @@ module:
       interpreters: *ref_1
       keywords: *ref_2
       license: MIT
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       contributors: *ref_3
       npm.name: wfileshttp
       npm.scripts: *ref_4
