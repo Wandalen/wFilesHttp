@@ -1,6 +1,6 @@
 {
   "name": "wfileshttp",
-  "version": "0.2.105",
+  "version": "0.2.106",
   "description": "Implements file provider to access files over HTTP.",
   "author": "Kostiantyn Wandalen <wandalen@obox.systems>",
   "contributors": [
@@ -30,10 +30,10 @@
     "url": "https://github.com/Wandalen/wFilesHttp/issues"
   },
   "dependencies": {
-    "wfilesbasic": "alpha"
+    "wfilesbasic": "latest"
   },
   "devDependencies": {
-    "wTesting": "alpha",
+    "wTesting": "latest",
     "eslint": "7.32.0"
   },
   "keywords": [

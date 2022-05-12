@@ -1,6 +1,6 @@
 {
   "name": "wfileshttp",
-  "version": "0.2.105",
+  "version": "0.2.106",
   "description": "Implements file provider to access files over HTTP.",
   "author": "Kostiantyn Wandalen <wandalen@obox.systems>",
   "contributors": [
